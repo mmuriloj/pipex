@@ -7,11 +7,8 @@
 # include <sys/wait.h>
 # include <stdio.h>
 
-typedef struct s_pipex
-{
-	int	pid_in;
-	int	pid_out;
-	int	fd[2];
-}	t_pipex;
+
+# define RED			"\033[31m"
+# define RESET_COLOR	"\e[m"
 
 #endif
