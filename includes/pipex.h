@@ -11,4 +11,6 @@
 # define RED			"\033[31m"
 # define RESET_COLOR	"\e[m"
 
+char **get_path(char **envp);
+
 #endif
