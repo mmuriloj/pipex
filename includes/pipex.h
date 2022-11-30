@@ -11,6 +11,8 @@
 # define RED			"\033[31m"
 # define RESET_COLOR	"\e[m"
 
-char **get_path(char **envp);
-
+char	**get_path_directory(char **envp);
+void	execute_command(char *argv, char **envp);
+char	*find_path(char *cmd, char **envp);
+void	error_msg(char *msg);
 #endif
