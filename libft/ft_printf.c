@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:44:13 by mumontei          #+#    #+#             */
-/*   Updated: 2022/09/29 20:36:23 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:11:09 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 int	ft_printf(const char *str, ...)
 {
@@ -64,28 +64,3 @@ int	format_identifier(const char *str, va_list args)
 		write(1, &str, 1);
 	return (1);
 }
-
-/*
-int	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-	return (1);
-}
-*/
-
-/*
-int	ft_putstr_fd(char *s, int fd)
-{
-	int	len;
-
-	len = 0;
-	if (!s)
-	{
-		write(fd, "(null)", 6);
-		return (6);
-	}
-	len = ft_strlen(s);
-	write(1, s, len);
-	return (len);
-}
-*/

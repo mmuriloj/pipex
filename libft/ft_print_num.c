@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_num.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/19 21:32:42 by mumontei          #+#    #+#             */
-/*   Updated: 2022/09/29 20:36:00 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/11/29 18:11:20 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./includes/libft.h"
 
 int	n_digits(int nbr)
 {
@@ -55,13 +55,3 @@ int	ft_print_u(unsigned int num)
 	i++;
 	return (i);
 }
-
-/*int	ft_strlen(const char *s)
-{
-	size_t	size;
-
-	size = 0;
-	while (s[size] != '\0')
-		size++;
-	return (size);
-}*/

@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 02:10:53 by mumontei          #+#    #+#             */
-/*   Updated: 2022/11/29 15:06:26 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/11/30 11:39:48 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,6 @@ int main(int argc, char **argv, char **envp)
 	int		pipe_fd[2];
 	
 	check_args(argc);
-	
-	//int i = -1;
-	//ft_printf("\n", envp[i]);
-	//while(envp[++i])
-	//	ft_printf(">> %s\n", envp[i]);
-	
 	if (pipe(pipe_fd) == -1)
 		error_msg("");
 	pid = fork();
@@ -78,3 +72,8 @@ int main(int argc, char **argv, char **envp)
 	waitpid(pid, NULL, 0);
 	parent(argv, pipe_fd, envp);
 }
+
+//int i = -1;
+//ft_printf("\n", envp[i]);
+//while(envp[++i])
+//	ft_printf(">> %s\n", envp[i]);

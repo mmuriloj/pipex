@@ -1,7 +1,7 @@
 NAME = libft.a
 COMPILER = cc
 CFLAGS = -Wall -Werror -Wextra -c
-HEADER = ft_printf.h
+HEADER = ./includes/ft_printf.h
 SRCS =  ft_atoi.c ft_isprint.c ft_printf.c \
 		ft_putstr_fd.c ft_strlcpy.c ft_substr.c \
 		ft_bzero.c ft_itoa.c ft_print_hex.c \
