@@ -29,7 +29,7 @@ $(OBJS):	$(SRCS)
 	@$(CC) $(CFLAGS) $(SRCS)
 
 clean:
-	@echo "Removing objects..."
+	@echo "Removing Libft..."
 	@rm -rf $(OBJS) 
 
 fclean: clean

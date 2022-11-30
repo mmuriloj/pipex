@@ -6,13 +6,13 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:01:15 by mumontei          #+#    #+#             */
-/*   Updated: 2022/11/30 11:43:56 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/11/30 14:16:55 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char **get_path_directory(char **envp)
+char **get_path_directories(char **envp)
 {
 	size_t	line;
 	char *path;
@@ -26,20 +26,14 @@ char **get_path_directory(char **envp)
 	return (ft_split(path, ':'));
 }
 
-/*
-void execute_command(char *cmd, char **envp)
-{
-	env_path(envp);
-}*/
-
-char	*find_path(char *cmd, char **envp)
+char	*command_path(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
 	char	*temp;
 	int		i;
 
-	paths = get_path_directory(envp);
+	paths = get_path_directories(envp);
 	i = 0;
 	while (paths[i])
 	{
@@ -60,20 +54,20 @@ char	*find_path(char *cmd, char **envp)
 
 void	execute_command(char *argv, char **envp)
 {
-	char	**cmd;
+	char	**command;
 	int 	i;
 	char	*path;
 	
 	i = -1;
-	cmd = ft_split(argv, ' ');
-	path = find_path(cmd[0], envp);
+	command = ft_split(argv, ' ');
+	path = command_path(command[0], envp);
 	if (!path)	
 	{
-		while (cmd[++i])
-			free(cmd[i]);
-		free(cmd);
+		while (command[++i])
+			free(command[i]);
+		free(command);
 		error_msg("");
 	}
-	if (execve(path, cmd, envp) == -1)
+	if (execve(path, command, envp) == -1)
 		error_msg("");
 }
