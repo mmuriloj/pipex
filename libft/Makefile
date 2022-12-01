@@ -25,11 +25,11 @@ $(NAME):	 $(OBJS)
 	@echo "\033[1;92mLibft created successfully!\033[0m"
 
 $(OBJS):	$(SRCS)
-	@echo "Creating objects..."
+	@echo "Creating libft objects..."
 	@$(CC) $(CFLAGS) $(SRCS)
 
 clean:
-	@echo "Removing Libft..."
+	@echo "Removing libft objects..."
 	@rm -rf $(OBJS) 
 
 fclean: clean
