@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 02:10:53 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/01 18:27:08 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/01 21:20:43 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void child(char **argv, char **envp, t_pipex *ppx)
 {
 	ppx->fdin = open(argv[1], O_RDONLY);
 	if (ppx->fdin == -1)
-		error_msg(argv[1]);
+		error_msg(argv[1], ppx);
 	dup2(ppx->fdin, STDIN_FILENO);
 	dup2(ppx->pipe_fd[1], STDOUT_FILENO);
 	close(ppx->fdin);
@@ -27,7 +27,7 @@ void	parent(char **argv, char **envp, t_pipex *ppx)
 {
 	ppx->fdout = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (ppx->fdout == -1)
-		error_msg(argv[4]);
+		error_msg(argv[4], ppx);
 	dup2(ppx->pipe_fd[0], STDIN_FILENO);
 	dup2(ppx->fdout, STDOUT_FILENO);
 	close(ppx->pipe_fd[1]);
@@ -38,10 +38,13 @@ int main(int argc, char **argv, char **envp)
 {
 	t_pipex ppx;
 	
+	ppx.saved_stdout = dup(1);
 	check_args(argc, &ppx);
 	if (pipe(ppx.pipe_fd) == -1)
-		error_msg("");
+		function_failure(PIPE_FAILURE, &ppx);
 	ppx.pid = fork();
+	if (ppx.pid == -1)
+		function_failure(FORK_FAILURE, &ppx);
 	if (ppx.pid == 0)
 		child(argv, envp, &ppx);
 	waitpid(ppx.pid, NULL, 0);
