@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:01:15 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/02 11:01:51 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/02 12:03:24 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ char	*command_path(char *cmd, char **envp, t_pipex *ppx)
 	while (ppx->paths[++i])
 		free(ppx->paths[i]);
 	free(ppx->paths);
-	error_msg(cmd, ppx);
+	//error_msg(cmd, ppx);
+	cmd_not_found(cmd, ppx);
 	return (0);
 }
 

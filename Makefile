@@ -24,7 +24,7 @@ LIBFT_DIR		=	./libft/
 LIBFT_HEADERS	=	${LIBFT_DIR}includes/
 
 CC				=	cc
-CFLAGS			=	-Wall -Werror -Wextra -g
+CFLAGS			=	-Wall -Werror -Wextra -g3
 
 all: ${NAME}
 

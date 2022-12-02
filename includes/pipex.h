@@ -38,4 +38,5 @@ void	turn_back(char ***cmd_arg);
 void	swap_value(char **cmd, t_pipex *ppx);
 char	**pipex_cmd_arg(char *cmd, t_pipex *ppx);
 void	quotes_error(void);
+void	cmd_not_found(char *func_name, t_pipex *ppx);
 #endif
