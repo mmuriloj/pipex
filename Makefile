@@ -7,7 +7,8 @@ HEADERS_LIST	=	pipex.h
 SOURCES_LIST	=	pipex.c \
 					execute.c \
 					check.c \
-					pipex_error.c
+					pipex_error.c \
+					fix_command.c
 
 HEADERS			=	${addprefix ${HEADERS_DIR}, ${HEADERS_LIST}}
 SOURCES			=	${addprefix ${SOURCES_DIR}, ${SOURCES_LIST}}
@@ -23,7 +24,7 @@ LIBFT_DIR		=	./libft/
 LIBFT_HEADERS	=	${LIBFT_DIR}includes/
 
 CC				=	cc
-CFLAGS			=	-Wall -Werror -Wextra
+CFLAGS			=	-Wall -Werror -Wextra -g
 
 all: ${NAME}
 
@@ -43,12 +44,12 @@ ${LIBFT}:
 	clear && make -sC ${LIBFT_DIR}
 
 clean:
+	clear
 	@make -sC ${LIBFT_DIR} clean
 	@echo "Removing pipex objects..."
 	@rm -rf ${OBJECTS_DIR}
 
 fclean: clean
-	clear
 	@echo "Removing Libft..."
 	@rm -rf ${LIBFT}
 	@echo "\033[31mLibft removed successfully!\033[0m"

@@ -33,5 +33,9 @@ void	error_msg(char *msg, t_pipex *ppx);
 void	reset_stdout(t_pipex *ppx);
 void	function_failure(char *func_name, t_pipex *ppx);
 
-
+void	cut_value(char ***cmd_arg);
+void	turn_back(char ***cmd_arg);
+void	swap_value(char **cmd, t_pipex *ppx);
+char	**pipex_cmd_arg(char *cmd, t_pipex *ppx);
+void	quotes_error(void);
 #endif

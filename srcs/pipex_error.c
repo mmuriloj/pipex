@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 21:28:17 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/01 21:29:14 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/02 10:53:53 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@ void	error_msg(char *msg, t_pipex *ppx)
 	reset_stdout(ppx);
 	ft_printf("pipex: ");
 	perror(msg);
+	exit(EXIT_FAILURE);
+}
+
+void	quotes_error(void)
+{
+	ft_printf("Error\nBad input in single quotes (\') or double quotes (\").\n");
 	exit(EXIT_FAILURE);
 }
 

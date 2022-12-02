@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:01:15 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/01 21:41:10 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/02 11:01:51 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ void	execute_command(char *argv, char **envp, t_pipex *ppx)
 	char	*path;
 	
 	i = -1;
-	//ft_printf("%s\n\n", argv);
-	command = ft_split(argv, ' ');
+	command = pipex_cmd_arg(argv, ppx);
 	path = command_path(command[0], envp, ppx);
 	if (!path)	
 	{
@@ -69,6 +68,8 @@ void	execute_command(char *argv, char **envp, t_pipex *ppx)
 		free(command);
 		error_msg("", ppx);
 	}
+	//if (execve(path, command, envp) == -1)
+	//	error_msg("", ppx);
 	if (execve(path, command, envp) == -1)
-		error_msg("", ppx);
+		ft_printf("Error\nexec doesn't work");
 }
