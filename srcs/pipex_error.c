@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_error.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 21:28:17 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 11:54:50 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:16:40 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,12 @@ void	function_failure(char *func_name, t_pipex *ppx)
 	reset_stdout(ppx);
 	ft_printf("pipex: %s", func_name);
 	exit(EXIT_FAILURE);
-	
 }
 
 void	cmd_not_found(char **cmd, t_pipex *ppx)
 {
 	int	i;
-	
+
 	reset_stdout(ppx);
 	ft_printf("pipex: %s: command not found\n", cmd[0]);
 	i = -1;

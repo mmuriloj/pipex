@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 02:10:53 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/01 21:20:43 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:22:21 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void child(char **argv, char **envp, t_pipex *ppx)
+void	child(char **argv, char **envp, t_pipex *ppx)
 {
 	ppx->fdin = open(argv[1], O_RDONLY);
 	if (ppx->fdin == -1)
@@ -34,10 +34,10 @@ void	parent(char **argv, char **envp, t_pipex *ppx)
 	execute_command(argv[3], envp, ppx);
 }
 
-int main(int argc, char **argv, char **envp)
+int	main(int argc, char **argv, char **envp)
 {
-	t_pipex ppx;
-	
+	t_pipex	ppx;
+
 	ppx.saved_stdout = dup(1);
 	check_args(argc, &ppx);
 	if (pipe(ppx.pipe_fd) == -1)
@@ -49,5 +49,5 @@ int main(int argc, char **argv, char **envp)
 		child(argv, envp, &ppx);
 	waitpid(ppx.pid, NULL, 0);
 	parent(argv, envp, &ppx);
-	return(ppx.exit);
+	return (ppx.exit);
 }

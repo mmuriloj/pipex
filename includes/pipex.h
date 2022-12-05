@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pipex.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/12/05 17:17:30 by mumontei          #+#    #+#             */
+/*   Updated: 2022/12/05 17:17:51 by mumontei         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PIPEX_H
 # define PIPEX_H
 # define TRUE 1
@@ -11,7 +23,6 @@
 # include <sys/types.h>
 # include <sys/wait.h>
 # include <stdio.h>
-
 
 typedef struct s_pipex
 {
@@ -32,7 +43,6 @@ char	*command_path(char **cmd, char **envp, t_pipex *ppx);
 void	error_msg(char *msg, t_pipex *ppx);
 void	reset_stdout(t_pipex *ppx);
 void	function_failure(char *func_name, t_pipex *ppx);
-
 void	cut_value(char ***cmd_arg);
 void	turn_back(char ***cmd_arg);
 void	swap_value(char **cmd, t_pipex *ppx);

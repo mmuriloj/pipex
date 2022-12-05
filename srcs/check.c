@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 14:13:33 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/01 21:28:23 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:17:04 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
-
 
 void	check_args(int argc, t_pipex *ppx)
 {

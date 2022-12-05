@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   execute.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:01:15 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 11:52:47 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:20:44 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-char **get_path_directories(char **envp)
+char	**get_path_directories(char **envp)
 {
 	size_t	line;
-	char *path;
-	
+	char	*path;
+
 	line = -1;
-	while(envp[++line])
+	while (envp[++line])
 	{
 		if (!(ft_strncmp("PATH=", envp[line], 5)))
 			path = envp[line];
@@ -48,7 +48,6 @@ char	*command_path(char **cmd, char **envp, t_pipex *ppx)
 	while (ppx->paths[++i])
 		free(ppx->paths[i]);
 	free(ppx->paths);
-	//error_msg(cmd, ppx);
 	i = -1;
 	cmd_not_found(cmd, ppx);
 	return (0);
@@ -57,9 +56,9 @@ char	*command_path(char **cmd, char **envp, t_pipex *ppx)
 void	execute_command(char *argv, char **envp, t_pipex *ppx)
 {
 	char	**command;
-	int 	i;
+	int		i;
 	char	*path;
-	
+
 	i = -1;
 	command = fix_command_arg(argv, ppx);
 	path = command_path(command, envp, ppx);
@@ -70,8 +69,6 @@ void	execute_command(char *argv, char **envp, t_pipex *ppx)
 		free(command);
 		error_msg("", ppx);
 	}
-	//if (execve(path, command, envp) == -1)
-	//	error_msg("", ppx);
 	if (execve(path, command, envp) == -1)
 		ft_printf("Error\nexec doesn't work");
 }

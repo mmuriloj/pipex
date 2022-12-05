@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   fix_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:10 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 11:54:18 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:19:02 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../includes/pipex.h"
 
@@ -89,7 +88,7 @@ void	swap_value(char **cmd, t_pipex *ppx)
 char	**fix_command_arg(char *cmd, t_pipex *ppx)
 {
 	char	**cmd_arg;
-	
+
 	cmd_arg = NULL;
 	ppx->check = 0;
 	swap_value(&cmd, ppx);
@@ -102,4 +101,3 @@ char	**fix_command_arg(char *cmd, t_pipex *ppx)
 	}
 	return (cmd_arg);
 }
-
