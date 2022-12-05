@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   teste.c                                            :+:      :+:    :+:   */
+/*   fix_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:10 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/02 10:59:00 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:54:18 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,10 +86,10 @@ void	swap_value(char **cmd, t_pipex *ppx)
 	}
 }
 
-char	**pipex_cmd_arg(char *cmd, t_pipex *ppx)
+char	**fix_command_arg(char *cmd, t_pipex *ppx)
 {
 	char	**cmd_arg;
-
+	
 	cmd_arg = NULL;
 	ppx->check = 0;
 	swap_value(&cmd, ppx);

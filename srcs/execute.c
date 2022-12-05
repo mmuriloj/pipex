@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/28 11:01:15 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/02 12:03:24 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:52:47 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char **get_path_directories(char **envp)
 	return (ft_split(path, ':'));
 }
 
-char	*command_path(char *cmd, char **envp, t_pipex *ppx)
+char	*command_path(char **cmd, char **envp, t_pipex *ppx)
 {
 	char	*path;
 	char	*temp;
@@ -37,7 +37,7 @@ char	*command_path(char *cmd, char **envp, t_pipex *ppx)
 	while (ppx->paths[i])
 	{
 		temp = ft_strjoin(ppx->paths[i], "/");
-		path = ft_strjoin(temp, cmd);
+		path = ft_strjoin(temp, cmd[0]);
 		free(temp);
 		if (access(path, F_OK) == 0)
 			return (path);
@@ -49,6 +49,7 @@ char	*command_path(char *cmd, char **envp, t_pipex *ppx)
 		free(ppx->paths[i]);
 	free(ppx->paths);
 	//error_msg(cmd, ppx);
+	i = -1;
 	cmd_not_found(cmd, ppx);
 	return (0);
 }
@@ -60,9 +61,9 @@ void	execute_command(char *argv, char **envp, t_pipex *ppx)
 	char	*path;
 	
 	i = -1;
-	command = pipex_cmd_arg(argv, ppx);
-	path = command_path(command[0], envp, ppx);
-	if (!path)	
+	command = fix_command_arg(argv, ppx);
+	path = command_path(command, envp, ppx);
+	if (!path)
 	{
 		while (command[++i])
 			free(command[i]);

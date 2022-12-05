@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/01 21:28:17 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/02 11:40:50 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 11:54:50 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,15 @@ void	function_failure(char *func_name, t_pipex *ppx)
 	
 }
 
-void	cmd_not_found(char *func_name, t_pipex *ppx)
+void	cmd_not_found(char **cmd, t_pipex *ppx)
 {
+	int	i;
+	
 	reset_stdout(ppx);
-	ft_printf("pipex: %s: command not found\n", func_name);
+	ft_printf("pipex: %s: command not found\n", cmd[0]);
+	i = -1;
+	while (cmd[++i])
+		free(cmd[i]);
+	free(cmd);
 	exit(COMMAND_NOT_FOUND);
 }
