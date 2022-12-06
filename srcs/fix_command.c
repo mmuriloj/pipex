@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   fix_command.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:10 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 17:19:02 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 22:57:36 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	cut_value(char ***cmd_arg)
+static void	trim_char(char ***cmd_arg)
 {
 	int		i;
 	char	*temp;
@@ -30,36 +30,36 @@ void	cut_value(char ***cmd_arg)
 	}
 }
 
-void	turn_back(char ***cmd_arg)
+static void	reverse_swap(char ***cmd_arg)
 {
 	int		i;
-	int		i2;
+	int		j;
 
 	i = 0;
-	i2 = 0;
+	j = 0;
 	while ((*cmd_arg)[i])
 	{
-		while ((*cmd_arg)[i][i2])
+		while ((*cmd_arg)[i][j])
 		{
-			if (((*cmd_arg)[i][i2] == '\'') || ((*cmd_arg)[i][i2] == '\"'))
+			if (((*cmd_arg)[i][j] == '\'') || ((*cmd_arg)[i][j] == '\"'))
 			{
-				i2++;
-				while (((*cmd_arg)[i][i2] != '\'') \
-				&& ((*cmd_arg)[i][i2] != '\"') && ((*cmd_arg)[i][i2]))
+				j++;
+				while (((*cmd_arg)[i][j] != '\'') \
+				&& ((*cmd_arg)[i][j] != '\"') && ((*cmd_arg)[i][j]))
 				{
-					if ((*cmd_arg)[i][i2] == 1)
-						(*cmd_arg)[i][i2] = ' ';
-					i2++;
+					if ((*cmd_arg)[i][j] == 1)
+						(*cmd_arg)[i][j] = ' ';
+					j++;
 				}
 			}
-			i2++;
+			j++;
 		}
 		i++;
-		i2 = 0;
+		j = 0;
 	}
 }
 
-void	swap_value(char **cmd, t_pipex *ppx)
+static void	swap_char(char **cmd, t_pipex *ppx)
 {
 	int		i;
 
@@ -91,13 +91,13 @@ char	**fix_command_arg(char *cmd, t_pipex *ppx)
 
 	cmd_arg = NULL;
 	ppx->check = 0;
-	swap_value(&cmd, ppx);
+	swap_char(&cmd, ppx);
 	cmd_arg = ft_split(cmd, ' ');
 	if (ppx->check == 1)
 	{
 		ppx->check = 0;
-		turn_back(&cmd_arg);
-		cut_value(&cmd_arg);
+		reverse_swap(&cmd_arg);
+		trim_char(&cmd_arg);
 	}
 	return (cmd_arg);
 }
