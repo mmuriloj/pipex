@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:10 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/06 09:43:04 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:48:00 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,4 @@ char	**fix_command_arg(char *cmd, t_pipex *ppx)
 		trim_char(&cmd_arg);
 	}
 	return (cmd_arg);
-}
+} 
