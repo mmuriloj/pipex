@@ -1,0 +1,14 @@
+repos_base/
+*.pdf
+*.a
+*test*
+*.vscode*
+infile
+outfile
+dup.txt
+*repos*
+*.txt
+*pip
+srcs/pip
+*.o
+pipex
