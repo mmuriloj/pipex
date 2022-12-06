@@ -6,7 +6,7 @@
 /*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 10:30:10 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 22:57:36 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/06 09:43:04 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static void	swap_char(char **cmd, t_pipex *ppx)
 			i++;
 			if (!(*cmd)[i])
 				quotes_error();
-			ppx->check = 1;
+			ppx->quote_flag = TRUE;
 			while ((((*cmd)[i] != '\'') && ((*cmd)[i] != '\"')) && (*cmd)[i])
 			{
 				if ((*cmd)[i] == ' ')
@@ -90,12 +90,12 @@ char	**fix_command_arg(char *cmd, t_pipex *ppx)
 	char	**cmd_arg;
 
 	cmd_arg = NULL;
-	ppx->check = 0;
+	ppx->quote_flag = FALSE;
 	swap_char(&cmd, ppx);
 	cmd_arg = ft_split(cmd, ' ');
-	if (ppx->check == 1)
+	if (ppx->quote_flag == TRUE)
 	{
-		ppx->check = 0;
+		ppx->quote_flag = FALSE;
 		reverse_swap(&cmd_arg);
 		trim_char(&cmd_arg);
 	}

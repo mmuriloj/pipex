@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:17:30 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/06 03:07:29 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/05 23:52:28 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_pipex
 	pid_t	pid;
 	int		pipe_fd[2];
 	int		exit;
-	int		check;
+	int		quote_flag;
 	int		fdin;
 	int		fdout;
 	char	**paths;
