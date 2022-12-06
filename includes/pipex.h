@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mumontei <mumontei@42.sp.org>              +#+  +:+       +#+        */
+/*   By: mumontei <mumontei@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/05 17:17:30 by mumontei          #+#    #+#             */
-/*   Updated: 2022/12/05 22:05:23 by mumontei         ###   ########.fr       */
+/*   Updated: 2022/12/06 03:07:29 by mumontei         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,14 @@ typedef struct s_pipex
 }	t_pipex;
 
 void	check_args(int argc, t_pipex *ppx);
-char	**get_path_directories(char **envp);
-void	execute_command(char *argv, char **envp, t_pipex *ppx);
+void	cmd_not_found(char **func_name, t_pipex *ppx);
 char	*command_path(char **cmd, char **envp, t_pipex *ppx);
 void	error_msg(char *msg, t_pipex *ppx);
-void	reset_stdout(t_pipex *ppx);
-void	function_failure(char *func_name, t_pipex *ppx);
-//void	cut_value(char ***cmd_arg);
-//void	turn_back(char ***cmd_arg);
-//void	swap_value(char **cmd, t_pipex *ppx);
+void	execute_command(char *argv, char **envp, t_pipex *ppx);
 char	**fix_command_arg(char *cmd, t_pipex *ppx);
+void	function_failure(char *func_name, t_pipex *ppx);
+char	**get_path_directories(char **envp);
+void	reset_stdout(t_pipex *ppx);
 void	quotes_error(void);
-void	cmd_not_found(char **func_name, t_pipex *ppx);
+
 #endif
