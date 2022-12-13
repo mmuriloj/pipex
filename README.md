@@ -22,7 +22,7 @@ $> < file1 cmd1 | cmd2 > file2
 In order to compile pipex, one must type `make` one the root folder.
 
 ## Examples
-`./pipex infile "ls -l" "wc -l" outfile` should behave likev ` < infile ls -l | wc -l > outfile`
+`./pipex infile "ls -l" "wc -l" outfile` should behave like ` < infile ls -l | wc -l > outfile`
 
 and
 
